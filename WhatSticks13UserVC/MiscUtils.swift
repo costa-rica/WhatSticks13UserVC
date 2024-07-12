@@ -206,8 +206,8 @@ extension UIView {
 class UserStore {
     
     static let shared = UserStore()
-    var user=User()
-    var isOffline = true
+    var user:User!
+    var isOnline = false
 
     init() {
         print("initiated UserStore")
