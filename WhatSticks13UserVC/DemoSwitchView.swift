@@ -39,10 +39,11 @@ class DemoSwitchView: UIView {
 //        /* Option 1: Offline and user.email is nil*/
 //        userStore.isOnline = false
 //        userStore.user.email = nil
+//        userStore.user.username = "ambivalent_elf_0000"
         /* Option 2: Online and user.email is nil*/
         userStore.isOnline = true
         userStore.user.email = nil
-        userStore.user.username = nil
+        userStore.user.username = "ambivalent_elf_0000"
 //        /* Option 3: Online and user.email is something*/
 //        userStore.isOnline = true
 //        userStore.user.email = "email@some_domain.com"
@@ -52,9 +53,7 @@ class DemoSwitchView: UIView {
 //        userStore.user.email = "email@some_domain.com"
 //        userStore.user.username = "email"
         
-    
-        
-        
+
         
     }
     
@@ -121,36 +120,36 @@ class DemoSwitchView: UIView {
         
         
         NSLayoutConstraint.activate([
-            lblTitleDemoSwitchView.topAnchor.constraint(equalTo: self.topAnchor, constant: 50),
-            lblTitleDemoSwitchView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-            lblTitleDemoSwitchView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            lblTitleDemoSwitchView.topAnchor.constraint(equalTo: self.topAnchor, constant: heightFromPct(percent: 3)),
+            lblTitleDemoSwitchView.leadingAnchor.constraint(equalTo: self.leadingAnchor,constant: widthFromPct(percent: 2)),
+            lblTitleDemoSwitchView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: widthFromPct(percent: -2)),
             
             
-            lblOptionalView01.topAnchor.constraint(equalTo: lblTitleDemoSwitchView.bottomAnchor, constant: 50),
-            lblOptionalView01.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 5),
+            lblOptionalView01.topAnchor.constraint(equalTo: lblTitleDemoSwitchView.bottomAnchor, constant: heightFromPct(percent: 2)),
+            lblOptionalView01.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: widthFromPct(percent: 3)),
             
             swtchOptionalView01.centerYAnchor.constraint(equalTo: lblOptionalView01.centerYAnchor),
-            swtchOptionalView01.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -5),
+            swtchOptionalView01.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: widthFromPct(percent: -2)),
             
-            lblOptionalView02.topAnchor.constraint(equalTo: lblOptionalView01.bottomAnchor, constant: 20),
-            lblOptionalView02.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 5),
+            lblOptionalView02.topAnchor.constraint(equalTo: lblOptionalView01.bottomAnchor, constant: heightFromPct(percent: 2)),
+            lblOptionalView02.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: widthFromPct(percent: 3)),
             
             swtchOptionalView02.centerYAnchor.constraint(equalTo: lblOptionalView02.centerYAnchor),
-            swtchOptionalView02.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -5),
+            swtchOptionalView02.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: widthFromPct(percent: -2)),
             
-            lblOptionalView03.topAnchor.constraint(equalTo: lblOptionalView02.bottomAnchor, constant: 20),
-            lblOptionalView03.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 5),
+            lblOptionalView03.topAnchor.constraint(equalTo: lblOptionalView02.bottomAnchor, constant: heightFromPct(percent: 2)),
+            lblOptionalView03.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: widthFromPct(percent: 3)),
             
             swtchOptionalView03.centerYAnchor.constraint(equalTo: lblOptionalView03.centerYAnchor),
-            swtchOptionalView03.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -5),
+            swtchOptionalView03.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: widthFromPct(percent: -2)),
             
-            lblOptionalView04.topAnchor.constraint(equalTo: lblOptionalView03.bottomAnchor, constant: 20),
-            lblOptionalView04.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 5),
+            lblOptionalView04.topAnchor.constraint(equalTo: lblOptionalView03.bottomAnchor, constant: heightFromPct(percent: 2)),
+            lblOptionalView04.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: widthFromPct(percent: 2)),
             
             swtchOptionalView04.centerYAnchor.constraint(equalTo: lblOptionalView04.centerYAnchor),
-            swtchOptionalView04.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -5),
+            swtchOptionalView04.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: widthFromPct(percent: -2)),
             
-            swtchOptionalView04.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -5),
+            swtchOptionalView04.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: heightFromPct(percent: -3)),
         ])
 
         
@@ -158,15 +157,15 @@ class DemoSwitchView: UIView {
     
     /* Objc Methods*/
     @objc private func switchValueChanged_01(_ sender: UISwitch) {
-        
+        userStore.isOnline = false
+        userStore.user.email = nil
+        userStore.user.username = "ambivalent_elf_0000"
         if sender.isOn {
             userStore.isOnline = false
             userStore.user.email = nil
             userStore.user.username = nil
             
             print("DemoSwitchView switch 01 is ON - Offline AND GenericUsername")
-            // This switch is disabled -- handled by:  case_option_1_Offline_and_generic_name
-//            self.swtchOptionalView01.isEnabled = false
             
             // All other switches turned off
             self.swtchOptionalView02.isOn = false
@@ -177,18 +176,16 @@ class DemoSwitchView: UIView {
             self.swtchOptionalView02.isEnabled = true
             self.swtchOptionalView03.isEnabled = true
             self.swtchOptionalView04.isEnabled = true
-            
-//            delegate?.remove_vwUserStatus()
-//            delegate?.remove_vwOffline()
+
             delegate?.case_option_1_Offline_and_generic_name()
-           
-//            print("userStore.user.username: \(userStore.user.username)")
             
         }
     }
     
     @objc private func switchValueChanged_02(_ sender: UISwitch) {
-        
+        userStore.isOnline = true
+        userStore.user.email = nil
+        userStore.user.username = "ambivalent_elf_0000"
         if sender.isOn {
             userStore.isOnline = true
             userStore.user.email = nil
@@ -197,8 +194,6 @@ class DemoSwitchView: UIView {
             delegate!.vwUserStatus.setup_vcRegistrationButton()
             
             print("DemoSwitchView switch 02 is ON - Online AND GenericUsername")
-            // This switch is disabled: handled by: case_option_2_Online_and_generic_name
-//            self.swtchOptionalView02.isEnabled = false
             
             // All other switches turned off
             self.swtchOptionalView01.isOn = false
@@ -221,11 +216,10 @@ class DemoSwitchView: UIView {
             userStore.user.email = "email@some_domain.com"
             userStore.user.username = "email"
             
-            delegate!.vwUserStatus.setup_vcRegistrationButton()
+//            delegate!.vwUserStatus.setup_vcRegistrationButton()
+            delegate!.vwUserStatus.remove_vcRegistrationButton()
             
             print("DemoSwitchView switch 02 is ON - Online AND GenericUsername")
-            // This switch is disabled: handled by: case_option_2_Online_and_generic_name
-//            self.swtchOptionalView02.isEnabled = false
             
             // All other switches turned off
             self.swtchOptionalView01.isOn = false
@@ -252,8 +246,6 @@ class DemoSwitchView: UIView {
             delegate!.vwUserStatus.remove_vcRegistrationButton()
             
             print("DemoSwitchView switch 02 is ON - Online AND GenericUsername")
-            // This switch is disabled -- handled by: case_option_4_Offline_and_custom_email
-//            self.swtchOptionalView04.isEnabled = false
             
             // All other switches turned off
             self.swtchOptionalView01.isOn = false
@@ -274,24 +266,17 @@ class DemoSwitchView: UIView {
 
 // Protocol definition
 protocol DemoSwitchViewDelegate: AnyObject {
-    //    func didUpdateWeatherInfo(_ weatherInfo: String)
     func removeSpinner()
     func showSpinner()
     func templateAlert(alertTitle:String,alertMessage: String,  backScreen: Bool)
     func presentAlertController(_ alertController: UIAlertController)
     func touchDown(_ sender: UIButton)
-//    func setup_vwOffline()
-//    func remove_vwOffline()
-//    func setup_vwUserStatus()
-//    func remove_vwUserStatus()
     var constraints_Offline_NoEmail:[NSLayoutConstraint] {get}
     var constraints_Online_NoEmail:[NSLayoutConstraint] {get}
     var constraints_Offline_YesEmail:[NSLayoutConstraint] {get}
-    
     func case_option_1_Offline_and_generic_name()
     func case_option_2_Online_and_generic_name()
     func case_option_3_Online_and_custom_email()
     func case_option_4_Offline_and_custom_email()
-    
     var vwUserStatus:UserVcUserStatusView {get}
 }

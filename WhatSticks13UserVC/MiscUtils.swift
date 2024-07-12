@@ -208,10 +208,12 @@ class UserStore {
     static let shared = UserStore()
     var user:User!
     var isOnline = false
-
+    
     init() {
         print("initiated UserStore")
         self.user = User()
+        self.user.location_permission_ws = true
+        self.user.location_permission_device = true
     }
 }
 
